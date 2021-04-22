@@ -38,7 +38,7 @@ class EmployerController extends Controller
 
         Employer::create($data);
 
-        return back();
+        return back()->with('message', "l'utilisateur  a bien été créer");
     }
 
     /**
@@ -75,12 +75,12 @@ class EmployerController extends Controller
 
         $user->update($data);
 
-        return redirect('/user/'.$user->id);
+        return redirect('/user/'.$user->id)->with('message', "l'utilisateur $user->nom a bien été mis a jour");;
     }
 
     public function destroy(Employer $user){
         $user->delete();
-        return redirect('admin');
+        return redirect('admin')->with('message', "l'utilisateur $user->nom a bien été supprimmer");
     }
 
 

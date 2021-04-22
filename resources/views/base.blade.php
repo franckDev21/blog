@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-',config('app.locale'))  }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App manager</title>
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
+    @yield('my_css_link')
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ route('home_') }}">
         <img src="{{ asset('images/diamond.svg') }}" alt="">
@@ -27,17 +37,12 @@
     </div>
 </nav>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App manager</title>
-    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
-    @yield('my_css_link')
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-</head>
-
 <body>
+    <div class="container">
+    @if (session()->has('message'))
+        <div class="alert mt-3 alert-success">{{ session()->get('message') }}</div>
+    @endif     
+    </div>
     <!-- chargement du templete -->
     @yield('content')
 </body>
