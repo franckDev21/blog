@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-',config('app.locale'))  }}">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('home_') }}">
         <img src="{{ asset('images/diamond.svg') }}" alt="">
         Manager
     </a>
@@ -18,6 +18,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login_') }}">login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin_') }}">voir les employés</a>
             </li>
         </ul>
 

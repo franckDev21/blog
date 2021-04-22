@@ -17,12 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nom',
+        'name',
         'email',
         'password',
-        'tel',
-        'prenom',
-        'socite'
     ];
 
     /**
@@ -43,13 +40,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function scopeUserNotAdmin($query){
-        return $query->where('role','user')->get();
-    } 
-
-    public function scopeFind($query,$id){
-        return $query->where('id',$id)->get();
-    }
-
 }

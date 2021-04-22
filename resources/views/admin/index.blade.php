@@ -17,16 +17,16 @@
                 <th scope="">Action</th>
             </tr>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($employers as $user)
             <tr>
                 <td> <a href="/user/{{$user->id}}"> {{ $user->nom }}</a> </td>
                 <td> {{ $user->prenom }} </td>
-                <td class="text-muted"> <em>{{ $user->email }} </em></td>
-                <td> {{ $user->socite }} </td>
-                <td> {{ $user->tel ?? 'aucun numero' }} </td>
+                <td class="text-muted"> <em>{{ $user->email }}</em></td>
+                <td> {{ $user->societe->nom }} </td>
+                <td> {{ $user->tel }} </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-info">modifier</a>
-                    <a href="#" class="btn btn-sm btn-danger">modifier</a>
+                    <a href="/user/{{ $user->id }}/edit" class="btn btn-primary">editer</a>
+                    @include('includes.destroy')
                 </td>
             </tr>
             @endforeach

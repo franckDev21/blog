@@ -1,28 +1,17 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmployerController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 Route::get('/', fn()=> view('user.home'))->name('home_');
-
 Route::get('/register', fn () => view('user.register'))->name('register_');
-
 Route::get('/login', fn () => view('user.login'))->name('login_');
 
-// users
-Route::get('/admin',[UserController::class,'index'])->name('admin_');
-Route::get('/admin/create', [UserController::class,'create'])->name('admin_create_');
-Route::post('/admin', [UserController::class, 'store']);
-Route::get('/user/{user}', [UserController::class, 'show']);
+// Employer
+Route::get('admin',[EmployerController::class,'index'])->name('admin_');
+Route::get('admin/create', [EmployerController::class,'create'])->name('admin_create_');
+Route::post('admin', [EmployerController::class, 'store']);
+Route::get('user/{user}', [EmployerController::class, 'show']);
+Route::get('user/{user}/edit', [EmployerController::class, 'edit']);
+Route::patch('user/{user}',[EmployerController::class,'update']);
+Route::delete('/user/{user}', [EmployerController::class, 'destroy']);
